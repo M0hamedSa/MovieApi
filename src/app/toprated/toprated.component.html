@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularMovies</title>
+</head>
+
+<div class="button">
+  <button class="bt" routerLink="/home">Now Playing</button>
+  <button class="bt" routerLink="/up">Up Coming</button>
+  <button class="bt" routerLink="/top">Top Rated</button>
+  <button class="bt" routerLink="/popular">Papular</button>
+</div>
+
+<section class="main" >
+    <section class="mov">
+
+    <h2 class="title">Top Rated Movies</h2>
+
+    <br>
+    <div class="input">
+        <div>
+          <input class="inp" type="text" placeholder="Get Movies By Word..." [(ngModel)]="term">
+        </div>
+        <div>
+            <input class="inp" type="text" id="rate" placeholder="Search By Rate..." [(ngModel)]="num">
+        </div>
+    </div>
+<div class="flex" >
+                            <div class="imgs" *ngFor="let m of tmovies | search: term | searchn :num " >
+                                <img src="https://image.tmdb.org/t/p/w500{{m.poster_path}}" alt="">
+                                  <div class="h3">
+                                    <div class="de1">
+                                      <h2 class="ttl">{{m.title}}</h2>
+                                      <p class="p1">{{m.overview}}</p>
+                                    </div>
+                                    <div class="de">
+                                        <p class="rate">Rate:{{m.vote_average}}</p>
+                                        <p class="date">Date:{{m.release_date}}</p>
+                                    </div>
+                                  </div>
+                            </div>
+</div>
+
+    </section>
+
+</section>
+
+
+
+</html>
